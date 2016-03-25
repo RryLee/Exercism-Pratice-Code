@@ -1,22 +1,8 @@
-from math import sqrt
-
 def sieve(n):
-    primes = []
-    primes.append(2)
-    for i in range(3, n + 1):
-        if isPrime(i):
+    multiples = set()
+    primes = list()
+    for i in range(2, n + 1):
+        if i not in multiples:
             primes.append(i)
+            multiples.update(range(i ** 2, n + 1, i))
     return primes
-
-def isPrime(n):
-    if n % 2 == 0:
-        return False
-
-    flag = True
-
-    for i in range(3, int(sqrt(n)) + 1):
-        if n % i == 0:
-            flag = False
-            break
-
-    return flag
