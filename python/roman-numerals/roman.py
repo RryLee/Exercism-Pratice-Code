@@ -1,27 +1,15 @@
 from collections import OrderedDict
 
-DIGITTOROMAN = OrderedDict()
-DIGITTOROMAN[1000] = 'M'
-DIGITTOROMAN[900] = 'CM'
-DIGITTOROMAN[500] = 'D'
-DIGITTOROMAN[400] = 'CD'
-DIGITTOROMAN[100] = 'C'
-DIGITTOROMAN[90] = 'XC'
-DIGITTOROMAN[50] = 'L'
-DIGITTOROMAN[40] = 'XL'
-DIGITTOROMAN[10] = 'X'
-DIGITTOROMAN[9] = 'IX'
-DIGITTOROMAN[5] = 'V'
-DIGITTOROMAN[4] = 'IV'
-DIGITTOROMAN[1] = 'I'
+DIGITTOROMAN = [(1000, 'M'), (900, 'CM'), (500, 'D'), (400, 'CD'), (100, 'C'),
+                (90, 'XC'), (50, 'L'), (40, 'XL'), (10, 'X'),
+                (9, 'IX'), (5, 'V'), (4, 'IV'), (1, 'I')]
 
 def numeral(num):
     roman = ''
 
-    for key, value in DIGITTOROMAN.items():
-        print key, value
-        while num >= key:
-            roman += value
-            num -= key
+    for item in DIGITTOROMAN:
+        while num >= item[0]:
+            roman += item[1]
+            num -= item[0]
 
     return roman
